@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const getCommunicate = (resource, callback) => {
+        const request = new XMLHttpRequest();
+        request.addEventListener("readystatechange", () => {
+          // console.log(request, request.readyState);
+          if (request.readyState === 4 && request.status === 200) {
+            const data = JSON.parse(request.responseText);
+            callback(undefined, data);
+          } else if (request.readyState === 4) {
+            // console.log("통신에 장애가 발생했습니다.");
+            callback("통신 장애가 있습니다.", request.responseText);
+          }
+        });
+        //   request.open("get", "https://jsonplaceholder.typicode.com/todosssss/");
+        // request.open("get", "https://jsonplaceholder.typicode.com/todos/");
+
+        request.open("get", resource);
+
+        request.send();
+
+        console.log(request);
+      };
+
+      //   getCommunicate((err, data) => {
+      //     console.log("콜백 실행!");
+      //     if (err) {
+      //       console.log(err);
+      //     } else {
+      //       console.log(data[0].title);
+      //       console.log(data[1].title);
+      //       console.log(data[2].title);
+      //       // console.log(data);
+      //     }
+      //   });
+      getCommunicate(
+        "https://jsonplaceholder.typicode.com/todos/1",
+        (err, data) => {
+          console.log(data.title);
+          getCommunicate(
+            "https://jsonplaceholder.typicode.com/todos/2",
+            (err, data) => {
+              console.log(data.title);
+              getCommunicate(
+                "https://jsonplaceholder.typicode.com/todos/3",
+                (err, data) => {
+                  console.log(data.title);
+                }
+              );
+            }
+          );
+        }
+      );
+    </script>
+  </body>
+</html>

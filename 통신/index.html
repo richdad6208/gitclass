@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const request = new XMLHttpRequest();
+      request.addEventListener("readystatechange", () => {
+        // console.log(request, request.readyState);
+        if (request.readyState === 4 && request.status === 200) {
+          const json = JSON.parse(request.response)[0].userId;
+          console.log(json);
+        } else if (request.readyState === 4) {
+          console.log("통신에 장애가 발생했습니다.");
+        }
+      });
+      //   request.open("get", "https://jsonplaceholder.typicode.com/todosssss/");
+      request.open("get", "https://jsonplaceholder.typicode.com/todos/");
+      request.send();
+
+      console.log(request);
+    </script>
+  </body>
+</html>

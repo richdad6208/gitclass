@@ -1,0 +1,24 @@
+{
+  "name": "gitclass",
+  "version": "1.0.0",
+  "description": "엘리스 깃 수업을 위해 만들었습니다.",
+  "main": "compare.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richdad6208/gitclass.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richdad6208/gitclass/issues"
+  },
+  "homepage": "https://github.com/richdad6208/gitclass#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
